@@ -31,7 +31,13 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                         </>
                     </Link>
                 </div>
-
+                <div>
+                    <Link href='/'>
+                        <div>
+                            <p>{post.postedBy.userName}</p>
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
     </div>
