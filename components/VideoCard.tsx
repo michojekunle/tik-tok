@@ -27,6 +27,12 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             setIsPlaying(true);
         }
     }
+
+    useEffect(()=> {
+        if(videoRef?.current) {
+            videoRef.current.muted = isVideoMuted;
+        }
+    }, [isVideoMuted])
     
   return (
     <div className='flex flex-col border-b-2 border-grey-200 pb-6'>
@@ -48,7 +54,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 </div>
                 <div>
                     <Link href='/'>
-                        <div className='flex gap-2 items-center'>
+                        <div className='flex gap-2 items-center '>
                             <p className='flex gap-2 items-center md:text-sm font-bold text-primary'>{post.postedBy.userName} {'  '} <GoVerified className='text-blue-400 text-md' /></p>
                             <p className='capitalize text-primary text-xs text-gray-500 hidden md:block '>{post.postedBy.userName}</p>      
                         </div>
