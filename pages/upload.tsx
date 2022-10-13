@@ -38,10 +38,7 @@ const Upload = () => {
     }
 
     const handlePost = async () => {
-        alert('clicked')
         if(caption && videoAsset?._id && category) {
-        alert('clicked 2')
-
             setSavingPost(true)
             const document = {
                 _type: 'post',
@@ -63,11 +60,10 @@ const Upload = () => {
 
             await axios.post('http://localhost:3000/api/post', document);
             router.push('/')
-            alert('saved post')
         }
     }
 
-    
+
   return (
     <div className='flex w-full h-full absolute left-0 top=[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center'>
         <div className="bg-white w-[60%] rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-between items-center p-14 pt-6 ">
