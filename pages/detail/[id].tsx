@@ -24,6 +24,8 @@ const Detail = ({ postDetails }: IProps) => {
   const { userProfile } : any = useAuthStore();
   const videoRef = useRef<HTMLVideoElement>(null)  
   const router = useRouter();
+  const [comment, setComment] = useState('');
+  const [isPostingComment, setIsPostingComment] = useState(false);
 
   const onVideoClick = () => {
       if(playing) {
@@ -52,6 +54,23 @@ const handleLike = async (like: boolean) => {
 
     setPost({ ...post, likes: data.likes })
 
+  }
+}
+
+
+const addComment = async (e : React.FormEvent) => {
+  e.preventDefault() 
+  if(userProfile && comment) {
+    setIsPostingComment(true);
+
+    const { data }: any = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+      userId: userProfile._id,  
+      comment
+    })
+
+    setPost({ ...post, comments: data.comments });
+    setComment('');
+    setIsPostingComment(false);
   }
 }
 
@@ -96,7 +115,7 @@ const handleLike = async (like: boolean) => {
         </div>
       </div>
       
-      <div className = ".relative.w-[1000px].md:w-[900px] lg:d-[700px]">
+      <div className = "relative w-[1000px].md:w-[900px] lg:d-[700px]">
         <div className="lg:mt-20 mt-10 ">
         <div className='font-semibold rounded cursor-pointer gap-3 p-2 flex'>
                 <div className="md:w-20 md:h-20 h-16 w-16 ml-4">
@@ -134,10 +153,14 @@ const handleLike = async (like: boolean) => {
               handleDislike= {() => handleLike(false)}
             />
           )}
+          <Comments 
+            comment={comment}
+            comments={post.comments}
+            setComment={setComment}
+            addComment= {addComment}
+            isPostingComment={isPostingComment}
+          />
         </div>
-        <Comments 
-        
-        />
 
       </div>
 
