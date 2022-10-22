@@ -26,8 +26,8 @@ const Comments = ({ comment, addComment, setComment, comments, isPostingComment}
   const { userProfile, allUsers } = useAuthStore();
 
   return (
-    <div className='border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
-        <div className="overflow-scroll lg:h-[475px]">
+    <div className='border-t-2 border-gray-200 pt-4 mt-10 mb-10 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px] relative'>
+        <div className=" overflow-scroll lg:h-[475px] w-[400px] ">
           {comments?.length ? (
             <div>
               {comments.map((item, idx) => (
@@ -71,25 +71,24 @@ const Comments = ({ comment, addComment, setComment, comments, isPostingComment}
               <NoResults text='No Comments yet!'/>
             )}
         </div>
-
         {userProfile && (
-          <div className="absolute left-0 bottom-0 pb-6 px-2 md:px-10">
-            <form onSubmit={addComment} className='flex gap-4'>
-              <input 
-                type="text"
-                value={comment} 
-                onChange={(e) => {setComment(e.target.value)}}
-                placeholder='Add a comment'
-                className='bg-primary px-6 py-4 text-md font-medium border-2 w-[250px] md:w-[700px] lg:w-[350px] border-gray-100 focus:border-gray-300 flex-1 rounded-lg focus:outline-none'
-              />
-              <button className='text-md text-gray-400' onClick={addComment}>
-                {
-                  isPostingComment ? 'Commenting' : 'Comment'
-                }
-              </button>
-            </form>
-          </div>
-        )}
+            <div className="absolute left-0 bottom-0 pb-6 px-2 md:px-10">
+              <form onSubmit={addComment} className='flex gap-4'>
+                <input 
+                  type="text"
+                  value={comment} 
+                  onChange={(e) => {setComment(e.target.value)}}
+                  placeholder='Add a comment'
+                  className='bg-primary px-6 py-4 text-md font-medium border-2 w-[200px] md:w-[300px] lg:w-[330px] border-gray-100 focus:border-gray-300 flex-1 rounded-lg focus:outline-none'
+                />
+                <button className='text-md text-gray-400' onClick={addComment}>
+                  {
+                    isPostingComment ? 'Commenting' : 'Comment'
+                  }
+                </button>
+              </form>
+            </div>
+          )}
     </div>
   )
 }

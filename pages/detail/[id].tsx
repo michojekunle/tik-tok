@@ -84,7 +84,7 @@ const addComment = async (e : React.FormEvent) => {
           </p>
         </div>
         <div className="relative">
-          <div className="lg:h-[100vh] h-[60vh]">
+          <div className="lg:h-[100vh] h-[60vh] xl:h-[900px]">
             <video 
               ref={videoRef}
               loop

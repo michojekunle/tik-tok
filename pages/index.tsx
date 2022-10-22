@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const Home = ({ videos }: IProps) => {
-  console.log(videos)
   return (
     <h1 className="text-3xl font-bold underline">
       <div className="videos flex flex-col gap-10 h-full ">
@@ -27,12 +26,22 @@ const Home = ({ videos }: IProps) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const { data } = await axios.get(`${BASE_URL}/api/post`);
+export const getServerSideProps = async ({
+  query: { topic }
+}: {
+  query: { topic: string }
+}) => {
+  let response = null;
+
+  if(topic){
+    response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+  } else {
+    response = await axios.get(`${BASE_URL}/api/post`);
+  }
 
   return {
     props: {
-      videos: data
+      videos: response?.data
     }
   }
 } 
