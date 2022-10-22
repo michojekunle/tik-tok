@@ -17,11 +17,20 @@ interface IProps {
 }
 
 const Profile = ({ data }: IProps) => {
-    const [showUserVideos, setShowUserVideos] = useState(true)
+    const [showUserVideos, setShowUserVideos] = useState(true);
+    const [videoList, setVideoList] = useState<Video[]>([]);
     const { user, userVideos, userLikedVideos } = data;
 
     const videos = showUserVideos ? 'border-b-2 border-black' : 'text-gray-400'; 
     const liked = !showUserVideos ? 'border-b-2 border-black' : 'text-gray-400'; 
+
+    useEffect(() => {
+      if(showUserVideos) {
+        setVideoList(userVideos);
+      } else {
+        setVideoList(userLikedVideos);
+      }
+    }, [showUserVideos, userLikedVideos, userVideos])
     return (
         <div className='w-full'>
             <div className="flex gap-6 md:gap-10 mb-4 bg-white w-full">
@@ -48,6 +57,14 @@ const Profile = ({ data }: IProps) => {
             <div className='flex border-b-2 border-gray-200 bg-white w-full mt-10 gap-10 mb-10'>
               <p className={`text-xl font-semibold cursor-pointer mt-2 ${videos}`} onClick={() => setShowUserVideos(true)}>Videos</p>
               <p className={`text-xl font-semibold cursor-pointer mt-2 ${liked}`} onClick={() => setShowUserVideos(false)}>Liked</p>
+            </div>
+            <div className='flex gap-6 flex-wrap md:justify-start'>
+              {videoList.length > 0 ?  (
+                videoList.map((post: Video, idx: number) => (
+                  <VideoCard post={post} key={idx}/>
+                )) 
+              ) : <NoResults text={`No ${showUserVideos ? '' : 'Liked'} Videos Yet`}/> 
+              }
             </div>
 
         </div>
