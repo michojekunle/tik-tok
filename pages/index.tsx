@@ -26,6 +26,7 @@ const Home = ({ videos }: IProps) => {
   )
 }
 
+
 export const getServerSideProps = async ({
   query: { topic }
 }: {
