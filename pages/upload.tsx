@@ -14,7 +14,7 @@ const Upload = () => {
     const [videoAsset, setVideoAsset] = useState<SanityAssetDocument | undefined>();
     const [wrongFileType, setWrongFileType] = useState(false);
     const [caption, setCaption] = useState('')
-    const [category, setCategory] = useState(topics[0])
+    const [category, setCategory] = useState(topics[0].name)
     const [savingPost, setSavingPost] = useState(false)
     const { userProfile }: { userProfile: any } = useAuthStore();
     const router = useRouter();
@@ -65,7 +65,7 @@ const Upload = () => {
 
 
   return (
-    <div className='flex w-full h-full absolute left-0 top=[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center'>
+    <div className='flex w-full h-full absolute left-0 top-[80px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center'>
         <div className="bg-white w-[60%] rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-between items-center p-14 pt-6 ">
             <div>
                 <div>
@@ -136,7 +136,7 @@ const Upload = () => {
                     <label htmlFor="" className='text-md font-medium'>Choose A Category</label>
                     <select
                         name="" 
-                        onChange={e => e.target.value}
+                        onChange={e => setCategory(e.target.value)}
                         className='outline-none border-2 border-gray-200 bg-white text-gray-700 rounded text-md capitalize lg:p-4 p-2 hover:bg-slate-300'
                     >
                         { topics.map(topic => (

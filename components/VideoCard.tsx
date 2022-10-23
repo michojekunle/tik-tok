@@ -64,7 +64,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         </div>
         <div className="lg:ml-20 flex gap-4 relative">
             <div 
-                className='rounded-3xl'
+                className='rounded-3xl relative'
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
@@ -80,7 +80,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 </Link>
                 {
                     isHover && (
-                        <div className='absolute bottom-6 left-8 cursor-pointer md:left-14 lg:left-0 flex gap-10 lg:justify-between p-3 w-[100px] md:w-[50px] '>
+                        <div className='absolute bottom-6 left-8 cursor-pointer md:left-14 lg:left-0 flex gap-10 lg:justify-between p-3 w-[100px] md:w-full '>
                             {
                                 isPlaying ? (
                                     <button onClick={onVideoPress}>
