@@ -5,7 +5,7 @@
   "description": "",
   "main": "package.json",
   "author": "AMD <michojekunle1@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "UNLICENSED", 
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
