@@ -140,7 +140,7 @@ const Upload = () => {
                         onChange={e => setCategory(e.target.value)}
                         className='outline-none border-2 border-gray-200 bg-white text-gray-700 rounded text-md capitalize lg:p-4 p-2 hover:bg-slate-300'
                     >
-                        { topics.map(topic => (
+                        {topics.map(topic => (
                             <option
                                 key={topic.name}
                                 value={topic.name}
@@ -148,8 +148,7 @@ const Upload = () => {
                                 {topic.name}
 
                             </option>
-                        ))
-                        }
+                        ))}
                     </select>
                     <div className='flex gap-6 mt-10'>
                         <button
