@@ -82,7 +82,7 @@ const Upload = () => {
                                 {
                                     videoAsset ? (
                                         <div>
-                                            <video 
+                                            <video
                                                 src={videoAsset.url}
                                                 loop
                                                 controls
@@ -109,10 +109,10 @@ const Upload = () => {
                                                     Select File
                                                 </p>
                                             </div>
-                                            <input 
-                                                type="file" 
-                                                name='upload-video' 
-                                                className='w-0 h-0' 
+                                            <input
+                                                type="file"
+                                                name='upload-video'
+                                                className='w-0 h-0'
                                                 onChange={uploadVideo}
                                             />
                                         </label>
@@ -128,21 +128,21 @@ const Upload = () => {
             </div>
                 <div className='flex flex-col gap-3 pb-10'>
                     <label htmlFor="" className='text-md font-medium'>Caption</label>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         value={caption}
                         onChange={e => setCaption(e.target.value)}
                         className='rounded outline-none text-md border-2 border-gray-200 p-2'
                     />
                     <label htmlFor="" className='text-md font-medium'>Choose A Category</label>
                     <select
-                        name="" 
+                        name=""
                         onChange={e => setCategory(e.target.value)}
                         className='outline-none border-2 border-gray-200 bg-white text-gray-700 rounded text-md capitalize lg:p-4 p-2 hover:bg-slate-300'
                     >
                         { topics.map(topic => (
-                            <option 
-                                key={topic.name} 
+                            <option
+                                key={topic.name}
                                 value={topic.name}
                             >
                                 {topic.name}
@@ -153,7 +153,6 @@ const Upload = () => {
                     </select>
                     <div className='flex gap-6 mt-10'>
                         <button
-                            // onClick={}
                             type="button"
                             className='border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44'
                         >
