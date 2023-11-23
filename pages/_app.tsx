@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     setIsSSR(false)
   },[])
-  
+
   if(isSSR) return null;
 
   return (
@@ -30,8 +30,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         </div>
       </div>
     </GoogleOAuthProvider>
-  ) 
-  
+  )
 }
 
 export default MyApp
